@@ -1,20 +1,15 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
+import time
+from reloading import reloading
+from functions.normRNG import normRNG
+from functions.get_webdriver import get_webdriver
+from functions.save_page_source import save_page_source
+from functions.test_this import test_this
 
-# Specify the path to the web driver executable
-driver_path = "C:\\utils\\chromedriver.exe"
 
-# Create a new instance of the web driver
-service = ChromeService(executable_path=driver_path)
-driver = webdriver.Chrome(service=service)
-
-# Navigate to the desired URL
-url = 'https://google.com'
-driver.get(url)
-
-# Save the page source to a file
-with open('page.html', 'w', encoding='utf-8') as file:
-    file.write(driver.page_source)
-
-# Close the browser
-driver.quit()
+driver = get_webdriver()
+save_page_source(driver)
+test_this(driver)
+for i in reloading(forever=True):
+    print("test")
+    time.sleep(normRNG(1))
+    print(driver.current_url)    
