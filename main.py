@@ -1,4 +1,4 @@
-import queries.rh
+import queries.test_cpxa
 
 
 # import time
@@ -16,4 +16,4 @@ import queries.rh
 # for i in reloading(forever=True):
 #     print("test")
 #     time.sleep(normRNG(1))
-#     print(driver.current_url)    
+#     print(driver.current_url) 

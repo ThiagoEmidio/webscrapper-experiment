@@ -17,11 +17,11 @@ def get_webdriver(
     driver_path = chrome_driver_path
     service = ChromeService(executable_path=driver_path)
     options = webdriver.ChromeOptions()
+    options.add_argument("--disable-notifications")
+    options.add_argument("--window-size=1600,738")
     if isHeadless:
         options.add_argument("--headless=new")
         options.add_argument("--remote-debugging-port=9222")
-        options.add_argument("--window-size=1600,738")
-        print(options.arguments)
     if isToConnectWithAlreadyExistingTab:
         options.add_experimental_option("debuggerAddress", "localhost:9222")
     driver = webdriver.Chrome(service=service, options=options)
