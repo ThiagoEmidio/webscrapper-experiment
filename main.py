@@ -1,4 +1,4 @@
-import queries.test_cpxa
+import queries.gira
 
 
 # import time
