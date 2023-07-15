@@ -93,5 +93,6 @@ ENV/
 
 # page html
 page.html
+*.html
 constants/paths.py
 *.csv
