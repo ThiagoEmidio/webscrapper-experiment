@@ -81,7 +81,7 @@ celerybeat-schedule
 # dotenv
 .env
 
-# virtualenv
+# virtualenvunlw
 venv/
 ENV/
 
@@ -94,5 +94,7 @@ ENV/
 # page html
 page.html
 *.html
+*.xml
 constants/paths.py
 *.csv
+paths.py

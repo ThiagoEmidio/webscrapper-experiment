@@ -1,4 +1,4 @@
-import queries.gira
+import main_view
 
 
 # import time

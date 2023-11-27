@@ -9,30 +9,6 @@ from selenium.webdriver.remote.webelement import WebElement
 from constants.paths import chrome_driver_path
 from services.log import log
 
-def addAtEndFunction(driver):
-    def cleanup_function():
-        driver.quit()
-    atexit.register(cleanup_function)
-
-def get_webdriver(
-        isHeadless:bool = True,
-        isToConnectWithAlreadyExistingTab: bool = False
-        ) -> ChromiumDriver:
-    driver_path = chrome_driver_path
-    service = ChromeService(executable_path=driver_path)
-    options = webdriver.ChromeOptions()
-    options.add_argument("--disable-notifications")
-    options.add_argument("--window-size=1600,738")
-    if isHeadless:
-        options.add_argument("--headless=new")
-        options.add_argument("--remote-debugging-port=9222")
-    if isToConnectWithAlreadyExistingTab:
-        options.add_experimental_option("debuggerAddress", "localhost:9239")
-    driver = CustomChromeDriver(service=service, options=options)
-    addAtEndFunction(driver)
-    log.info("got the driver")
-    return driver
-
 class CustomSwitchTo(SwitchTo):
 
     def default_content(self) -> None:
@@ -73,3 +49,27 @@ class CustomChromeDriver(webdriver.Chrome):
         windowhandle = super().current_window_handle()
         log.info(f"get window handle: {windowhandle}")
         return windowhandle
+
+def addAtEndFunction(driver):
+    def cleanup_function():
+        driver.quit()
+    atexit.register(cleanup_function)
+
+def get_webdriver(
+        isHeadless:bool = True,
+        isToConnectWithAlreadyExistingTab: bool = False
+        ) -> CustomChromeDriver:
+    driver_path = chrome_driver_path
+    service = ChromeService(executable_path=driver_path)
+    options = webdriver.ChromeOptions()
+    options.add_argument("--disable-notifications")
+    options.add_argument("--window-size=1600,738")
+    if isHeadless:
+        options.add_argument("--headless=new")
+        options.add_argument("--remote-debugging-port=9222")
+    if isToConnectWithAlreadyExistingTab:
+        options.add_experimental_option("debuggerAddress", "localhost:9239")
+    driver = CustomChromeDriver(service=service, options=options)
+    addAtEndFunction(driver)
+    log.info("got the driver")
+    return driver

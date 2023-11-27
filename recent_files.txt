@@ -1,0 +1,2 @@
+C:/Users/t_emi/Documents/Projects/webscrapper-experiment/queries/sm.py
+C:/Users/t_emi/Documents/Projects/webscrapper-experiment/queries/rh.py
