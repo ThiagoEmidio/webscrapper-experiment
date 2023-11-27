@@ -12,7 +12,7 @@ page_source = driver.page_source
 soup = BeautifulSoup(page_source, 'lxml')
 word_counts = {}
 
-with open("queries\find_w0k3\functions\w0k3_words.csv", 'r') as csvfile:
+with open("queries\find_person\functions\score_words.csv", 'r') as csvfile:
     csv_reader = csv.reader(csvfile)
     for row in csv_reader:
         # Assuming the words are in the first column
